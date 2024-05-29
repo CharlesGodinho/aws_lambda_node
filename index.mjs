@@ -8,11 +8,12 @@ export const handler = async (event) => {
   const Bucket = record.s3.bucket.name;
   const Key = record.s3.object.key;
   const getObjectResult = await s3Client.getObject({
-    Bucket,
-    Key,
+      Bucket,
+      Key,
   });
   const mega_byte = 1024 * 1024;
-  if(getObjectResult.ContentLength > 1 * mega_byte){
+
+  if (getObjectResult.ContentLength > 1 * mega_byte) {
     log('Objeto grande');
     return 'Objeto muito grande';
   }
